@@ -51,4 +51,7 @@ def Find_Main_Datas() :
         Main_Hotels_DataFrame = Main_Hotels_DataFrame.append( Hotels_DataFrame,
                                                             ignore_index = True)
 
+
+
+    ''' [ url에서 가져온 새 DataFrame을 반환한다. ] '''
     return Main_Hotels_DataFrame
