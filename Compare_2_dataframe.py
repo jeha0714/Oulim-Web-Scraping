@@ -8,6 +8,7 @@ import numpy as np
 def Compare_DataFrame( new_df, saved_df ) :
 
     # 우선 new_df와 saved_df 두 DataFrame을 하나로 합쳐준다.
+    Combine_df = pd.DataFrame()
     Combine_df = pd.concat( [ new_df, saved_df ] )
 
     # 인덱스를 초기화 해준다. 
@@ -32,4 +33,4 @@ def Compare_DataFrame( new_df, saved_df ) :
 
     
     ''' [ new_df와 saved_df의 다른 행 값만 반환해준다! ] '''
-    return Combine_df.reindex[ differnt_Indexs ]
+    return Combine_df.reindex( differnt_Indexs )
