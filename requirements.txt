@@ -1,0 +1,10 @@
+discord.py
+bs4
+beautifulsoup4
+fuzzywuzzy
+openpyxl==2.5.12
+requests
+telegram
+time
+numpy
+pandas
