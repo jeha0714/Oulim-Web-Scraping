@@ -10,7 +10,7 @@ import time
 import Find_Data_from_html # 알바정보 찾아오기
 import Compare_2_dataframe # 두 개의 데이터프레임 전체 비교
 import Link_with_Telegram # 텔레그램 정보
-
+import drop_Yesterday_Data # 자정기준 다음날로 넘어갔을 때 전날 데이터 삭제
 
 
 # 첫 데이터 선언
@@ -21,10 +21,20 @@ new_Hotels_DataFrame = pd.DataFrame()
 
 ''' < 이 아래로 매 1분마다 실행 > '''
 while(True) : 
+
+
+    # 어제 데이터들은 제거해준다.
+    # 최초 시작 saved_Hotels_DataFrame 데이터가 없는 경우는 넘어간다.
+    if saved_Hotels_DataFrame.value_counts != 0 :
+        saved_Hotels_DataFrame = drop_Yesterday_Data.drop_Yesterday_Data( saved_Hotels_DataFrame )
+
+    # 웹사이트에서 새 데이터들을 가져온다.
     new_Hotels_DataFrame = Find_Data_from_html.Find_Main_Datas()
 
+    # 기존에 저장된 데이터와 새롭게 가져온 데이터를 비교한다.
     Different_DataFrame =  Compare_2_dataframe.Compare_DataFrame( 
                             new_Hotels_DataFrame, saved_Hotels_DataFrame)
+
 
     # 만약 Different_DataFrame 내에 정보가 하나라도 존재한다면
     if ( len( Different_DataFrame ) > 0 )  :
