@@ -12,6 +12,7 @@ def drop_Yesterday_Data( saved_DataFrame ):
         
         # '날짜'column.values들은 type이 str이므로 
         # yesterday 값도 str type으로 변형
+        # 월/일은 항상 두자리로 표시 ex) 9/1 x 09/01 o
         yesterday_Month = str( Yesterday.month ).zfill(2)
         yesterday_Day = str( Yesterday.day ).zfill(2)
         yesterday_String = yesterday_Month +'.' + yesterday_Day
