@@ -8,6 +8,8 @@ def drop_Yesterday_Data( saved_DataFrame ):
     Yesterday = now_Datetime - datetime.timedelta(1)
 
     # 만약 지금 시간이 자정이라면 ( 다음날로 넘어갔다면 )
+    # < 분 설정을 0분이 아닌 0~2분으로 해둔 이유는 !!! >
+    # 코드가 쉬는 시간 + 스크래핑 하는 시간으로 인해 drop함수가 00분을 넘어서 실행되는 경우가 우연히 발생 할 수 있기 때문
     if now_Datetime.hour == 0 and (
          0 <= now_Datetime.minute and now_Datetime.minute <= 2)  :
         
