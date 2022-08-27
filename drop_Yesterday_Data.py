@@ -8,7 +8,8 @@ def drop_Yesterday_Data( saved_DataFrame ):
     Yesterday = now_Datetime - datetime.timedelta(1)
 
     # 만약 지금 시간이 자정이라면 ( 다음날로 넘어갔다면 )
-    if now_Datetime.hour == 0 and now_Datetime.minute == 0 :
+    if now_Datetime.hour == 0 and (
+         0 <= now_Datetime.minute and now_Datetime.minute <= 2)  :
         
         # '날짜'column.values들은 type이 str이므로 
         # yesterday 값도 str type으로 변형
