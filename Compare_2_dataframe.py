@@ -16,7 +16,7 @@ def Compare_DataFrame( new_df, saved_df ) :
 
 
     # 결합한 DataFrame의 column을 모두 가져온다.
-    df_column = list( Combine_df.columns )
+    df_column = Combine_df.columns.tolist()
 
     # Combine_df 를 df_column로 group화 시켜준다.
     df_group = Combine_df.groupby( df_column )
