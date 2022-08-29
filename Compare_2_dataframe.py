@@ -1,10 +1,9 @@
-#from distutils.errors import CompileError
 import pandas as pd
-import numpy as np
 
 
 ''' < 기존에 저장중이던 DataFrame과 url을 통해 새롭게 가져온 DataFrame의
-        비교를 통해 다른 row값을 반환 > '''
+        비교를 통해 다른 데이터들을 반환 > '''
+
 def Compare_DataFrame( new_df, saved_df ) :
 
     # 우선 new_df와 saved_df 두 DataFrame을 하나로 합쳐준다.
@@ -14,11 +13,13 @@ def Compare_DataFrame( new_df, saved_df ) :
     # 인덱스를 초기화 해준다. 
     Combine_df = Combine_df.reset_index( drop=True )
 
-    # 결합한 DataFrame의 column을 모두 가져온다.
-    df_column = list( Combine_df.columns )
 
-    # Combine_df 를 df_columns로 group화 시켜준다.
+    # 결합한 DataFrame의 column을 모두 가져온다.
+    df_column = Combine_df.columns.tolist()
+
+    # Combine_df 를 df_column로 group화 시켜준다.
     df_group = Combine_df.groupby( df_column )
+
 
     # group화 시켜준 내용을 딕셔너리 형태로 전환시킨다.
     ### columns에 해당하는 정보가 들어있는 key 값과
