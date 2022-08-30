@@ -35,3 +35,5 @@ def Compare_DataFrame( new_df, saved_df ) :
     
     ''' [ new_df와 saved_df의 다른 행 값만 반환해준다! ] '''
     return Combine_df.reindex( differnt_Indexs )
+
+
