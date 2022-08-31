@@ -26,12 +26,14 @@ while(True) :
     Different_DataFrame =  Compare_2_dataframe.Compare_DataFrame( 
                             new_Hotels_DataFrame, saved_Hotels_DataFrame)
     
-    # 전날 데이터가 포함되어있는지 확인하고 제거해준다.
-    drop_Yesterday_Data.drop_Yesterday_Data( Different_DataFrame )
-    
+       
 
     ''' 만약 Different_DataFrame 내에 정보가 하나라도 존재한다면 '''
     if ( len( Different_DataFrame ) > 0 ) :
+
+        # 전날 데이터가 포함되어있는지 확인하고 제거해준다.
+        drop_Yesterday_Data.drop_Yesterday_Data( Different_DataFrame )
+
 
         # 찾고싶은 호텔알바의 현재 조건 
         # 근무지에 롯데 & 잠실이라는 단어가 포함되어 있으면서
