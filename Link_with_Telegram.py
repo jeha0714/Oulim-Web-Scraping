@@ -1,6 +1,5 @@
+import telegram
 import requests
-#import telegram
-
 
 bot_Token = "5627910267:AAEtrKaZHotkofGZaztn1Bo5P0oYb4CtBvs"
 personal_room_id = "5763314133" # 개인방 아이디
