@@ -7,7 +7,7 @@ import time
 import Find_Data_from_html  # 알바정보 찾아오기
 import Compare_2_dataframe  # 두 개의 데이터프레임 전체 비교
 import Link_with_Telegram   # 텔레그램 정보
-import drop_Yesterday_Data  # 자정기준 다음날로 넘어갔을 때 전날 데이터 삭제
+import drop_Today_Data  # 자정기준 다음날로 넘어갔을 때 전날 데이터 삭제
 
 
 ''' < 변수 선언 > '''
@@ -31,9 +31,11 @@ while(True) :
     ''' 만약 Different_DataFrame 내에 정보가 하나라도 존재한다면 '''
     if ( len( Different_DataFrame ) > 0 ) :
 
+        # 기존 저장되있던 데이터프레임을 새롭게 들고온 데이터프레임으로 바꿔준다.
+        saved_Hotels_DataFrame = new_Hotels_DataFrame
+        
         # 전날 데이터가 포함되어있는지 확인하고 제거해준다.
-        drop_Yesterday_Data.drop_Yesterday_Data( Different_DataFrame )
-
+        Different_DataFrame = drop_Today_Data.drop_Today_Data( Different_DataFrame )
 
         # 찾고싶은 호텔알바의 현재 조건 
         # 근무지에 롯데 & 잠실이라는 단어가 포함되어 있으면서
@@ -54,18 +56,15 @@ while(True) :
         ''' 만약 Target_Alba_DataFrame 내에 정보가 하나라도 존재한다면 '''
         if ( len( Target_Alba_DataFrame ) > 0 )  :
             
-            # 기존 저장되있던 데이터프레임을 새롭게 들고온 데이터프레임으로 바꿔준다.
-            saved_Hotels_DataFrame = new_Hotels_DataFrame
-
             # 텔레그램으로 알려주기!
             # 알바에 대한 정보를 앱에서 메시지로 보낸다.
             for x in Target_Alba_DataFrame.values :
                 texts = str(x)
-                Link_with_Telegram.send_message( texts )
+                
+                Link_with_Telegram.send_message( texts ) 
+                
                 time.sleep(1)
         
-                
     
     # 잠시 쉬어준 후 다시 반복
     time.sleep(50)
-ㅡ
